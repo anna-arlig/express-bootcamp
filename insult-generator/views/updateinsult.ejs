@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Update this insult!</h2>
+    <p>Id: <%= insult.id %></p> 
+    <p>"<%= insult.insult %>"</p>
+    <p>From the play <%= insult.play %> </p>
+    <p>Severity: <%= insult.severity %> </p>
+
+    <form action="/insults/<%= insult.id %> " method="POST">
+        <input type="text" name="insult" placeholder="Enter the updated insult">
+        <input type="text" name="play" placeholder="Enter the updated play">
+        <select name="severity" placeholder="Update severity" name="severity">
+            <option value="bananpaj">Bananpaj</option>
+            <option value="grillkorv">Grillkorv</option>
+            <option value="sötsursås">Sötsursås</option>
+        </select>
+        <button>Update the insult!</button>
+
+    </form>
+    
+
+</body>
+</html>

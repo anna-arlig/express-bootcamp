@@ -20,7 +20,6 @@ res.render('severity', {insult: insult})
 
 app.get('/insults', (req, res) => {
 res.render('addnew')
-console.log(insults)
 })
 
 app.post('/insults', (req, res) => {
@@ -40,13 +39,21 @@ app.get('/newinsult', (req, res) => {
 })
 
 app.get('/insults/:id', (req, res) => {
-
-
+    let temp = insults.insults.filter(insult => insult.id == req.params.id)
+    res.render('updateinsult', {insult: temp[0]})
 })
 
-app.post ('/insults/:id', (req, res) => {
-
+app.post(`/insults/:id`, (req, res) => {
+    let temp = insults.insults.find(insult => insult.id == req.params.id)
+    let index = insults.insults.indexOf(temp)
+    insults.insults[index] = {
+        id: Number(req.params.id),
+        insult: req.body.insult,
+        play: req.body.play,
+        severity: req.body.severity
+    }
+    console.log(insults.insults)
+    res.redirect('/')
 })
-
 
 app.listen(8000)
